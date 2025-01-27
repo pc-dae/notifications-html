@@ -18,8 +18,8 @@ public class NotificationController {
     private NotificationService notificationService;
 
     @ResponseStatus(HttpStatus.CREATED) // 201
-    @PostMapping("/{templateId}")
-    public void sendEmail(@PathVariable("templateId") String templateId, @RequestBody Email email) {
-        notificationService.sendEmail(templateId, email);
+    @PostMapping("/{templateName}")
+    public void sendEmail(@PathVariable("templateName") String templateName, @RequestBody Email email) {
+        notificationService.sendEmail(templateName, email);
     }
 }
