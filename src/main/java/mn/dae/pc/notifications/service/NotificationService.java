@@ -25,7 +25,7 @@ public class NotificationService {
         Map<String, String> htmlData = HashMap.newHashMap(1);
         System.out.print(html);
         htmlData.put("body", html );
-        //email.setData(htmlData);
+        email.setData(htmlData);
         try {
             emailFeignClient.email(email);
         } catch (Exception e) {

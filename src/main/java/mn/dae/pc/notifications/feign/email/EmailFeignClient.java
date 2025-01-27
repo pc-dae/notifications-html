@@ -11,7 +11,7 @@ import mn.dae.pc.notifications.entity.Email;
  * Feign client to connect to F5 AS3 REST APIs. Feign client configured to use base URL defined
  * during runtime based on region
  */
-@FeignClient(name = "email", url = "email.tester.svc.cluster.local")
+@FeignClient(name = "email", url = "email.email.svc.cluster.local")
 public interface EmailFeignClient {
 
   /** Login to F5 */
