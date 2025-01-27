@@ -15,7 +15,7 @@ public class Render {
     public String generateHTML(String templateName, Map<String, String> data) {
         try {
             MustacheFactory mf = new DefaultMustacheFactory();
-            Mustache mustache = mf.compile(String.format("src/main/resources/templates/%s.mustache", templateName));
+            Mustache mustache = mf.compile(String.format("application/templates/%s.mustache", templateName));
             Writer writer = new StringWriter();
             String rendered = mustache.execute(writer, data).toString();
             return rendered;
