@@ -2,8 +2,14 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/default.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE" />
     </root>
-    <logger name="org.springframework.web" level="DEBUG"/>
+    <logger name="org.springframework.web" level="INFO">
+        <filter class="ch.qos.logback.classic.filter.GroovyFilter">
+            <script>
+                return !event.message.contains("/actuator/health")
+            </script>
+        </filter>
+    </logger>
 </configuration>

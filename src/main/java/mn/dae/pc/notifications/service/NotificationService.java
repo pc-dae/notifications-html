@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
-import com.fasterxml.jackson.datatype.databind.ObjectMapper;
+// import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 @RequiredArgsConstructor
@@ -25,21 +25,10 @@ public class NotificationService {
 
     public void sendEmail(String templateName, Email email) {
         String html = render.generateHTML(templateName, email.getData());
-        Map<String, String> htmlData = HashMap.newHashMap(1);
-        System.out.print(html);
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonOutput = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(document);
+        log.debug("Template: {}", templateName);
+        log.debug("Email data: {}", email.getData());
 
-            // Print JSON to the console
-            System.out.println("Generated JSON:");
-            System.out.println(jsonOutput);
-
-        } catch (Exception e) {
-            System.out.println("Error creating JSON document: " + e.getMessage());
-        }
-        htmlData.put("body", html );
-        email.setData(htmlData);
+        email.getData().put("body", html);
         try {
             emailFeignClient.email(email);
         } catch (Exception e) {
