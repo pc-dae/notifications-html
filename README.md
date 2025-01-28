@@ -2,7 +2,7 @@
 
 ## Setup
 ```
-git clone [https://github.com/pc-dae/notifications-html.git](https://github.com/pc-dae/notifications-html.git)
+git clone https://github.com/pc-dae/notifications-html.git
 cd emails
 ```
 ## Build
